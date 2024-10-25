@@ -1,0 +1,55 @@
+@mixin section {
+  .section {
+    padding: 2rem;
+    border-radius: 25px;
+    &_title {
+      &_text {
+        display: inline;
+        color: $color-text-heading;
+        font-size: 23px;
+        padding: 10px 0;
+        position: relative;
+        &::before {
+          position: absolute;
+          content: "";
+          width: 4px;
+          height: 60%;
+          border-radius: 10px;
+          background-color: $color-primary-2;
+          left: -10px;
+          top: 50%;
+          transform: translateY(-50%);
+        }
+        @media screen and (max-width: 576px) {
+          font-size: 19px;
+         }
+      }
+    }
+  }
+}
+
+@mixin rowGapInSection {
+  display: flex;
+  flex-direction: column;
+  row-gap: 35px;
+}
+
+@mixin alignCards {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  row-gap: 20px;
+}
+
+@mixin styleCardItem($count) {
+  width: calc((100% / $count) - 1%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  row-gap: 10px;
+  padding: 25px;
+  border-radius: 20px;
+  border-left: 1px solid #aaa;
+  border-right: 1px solid #aaa;
+}

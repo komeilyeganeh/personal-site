@@ -1,0 +1,440 @@
+@import "./resetCss";
+@import "./mixins";
+@import "./colors";
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+// For mozila
+*::-moz-selection {
+  background-color: $color-primary-2;
+  color: $color-text-heading;
+}
+// For chrome
+*::selection {
+  background-color: $color-primary-2;
+  color: $color-text-heading;
+}
+
+::-webkit-scrollbar {
+  width: 0;
+}
+
+html {
+  font-family: "Inter", sans-serif;
+}
+
+body {
+  background-color: $color-body;
+  background-image: url("../assets/images/bg.png");
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+// Loading
+// .loading {
+//   position: fixed;
+//   top: 0;
+//   left: 0;
+//   width: 100vw;
+//   height: 100vh;
+//   z-index: 9999;
+//   background-color: $color-body;
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   transition: 0.5s ease-in;
+//   span {
+//     position: absolute;
+//     width: 50px;
+//     height: 50px;
+//     border-radius: 50%;
+//     outline: 4px dashed $color-primary-2;
+//     animation: effect-loading 3s linear infinite;
+//     @keyframes effect-loading {
+//       from {
+//         transform: rotate(0deg);
+//       }
+//       to {
+//         transform: rotate(360deg);
+//       }
+//     }
+//   }
+//   &.disable {
+//     transform: scale(2);
+//     opacity: 0;
+//     visibility: hidden;
+//   }
+// }
+
+// Container styles
+.container {
+  position: relative;
+  width: 1550px;
+  max-width: 90%;
+  height: 95vh;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 20px;
+  overflow: hidden;
+  @include section;
+  .side_left {
+    background-color: $color-dark-glass;
+    width: 400px;
+    max-width: 98%;
+    height: 100%;
+    border-radius: 25px;
+    overflow: hidden;
+    padding: 2rem 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    .profile_image {
+      width: 170px;
+      height: 170px;
+      img {
+        width: 100%;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+
+      @media screen and (max-width: 991px) {
+        display: flex;
+        align-items: center;
+      }
+      @media screen and (max-width: 556px) {
+        width: 90px;
+        height: 90px;
+      }
+    }
+    .profile_info {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      row-gap: 15px;
+      .profile_title {
+        color: $color-text-heading;
+        @media screen and (max-width: 1120px) {
+          font-size: 26px;
+        }
+        @media screen and (max-width: 576px) {
+          font-size: 18px;
+        }
+      }
+      @media screen and (max-width: 400px) {
+        align-items: flex-end;
+      }
+      .profile_job {
+        color: $color-primary-2;
+        font-size: 17px;
+        letter-spacing: 2px;
+        @media screen and (max-width: 576px) {
+          font-size: 15px;
+        }
+      }
+    }
+    .nav {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      row-gap: 100px;
+      transition: 0.3s ease-in;
+      ul {
+        display: flex;
+        flex-direction: column;
+        row-gap: 20px;
+        li {
+          text-align: center;
+          a {
+            display: block;
+            padding: 5px 25px;
+            color: $color-text-heading;
+            font-size: 14px;
+            transition: 0.1s ease-in;
+            &:hover {
+              transform: scale(1.2);
+              color: $color-primary-2;
+            }
+          }
+        }
+      }
+      .btn_close_menu {
+        display: none;
+        width: 30px;
+        height: 20px;
+        position: absolute;
+        top: 8%;
+        right: 3%;
+        span {
+          position: absolute;
+          display: inline-block;
+          width: 100%;
+          height: 2px;
+          background-color: $color-text-heading;
+          transition: 0.1s linear;
+          border-radius: 20px;
+          &:first-child {
+            transform: rotate(45deg);
+          }
+          &:last-child {
+            transform: rotate(-45deg);
+          }
+        }
+        @media screen and (max-width: 991px) {
+          display: block;
+        }
+      }
+      @media screen and (max-width: 991px) {
+        position: absolute;
+        top: -50%;
+        left: 0;
+        width: 100%;
+        opacity: 0;
+        visibility: hidden;
+        align-items: center;
+        z-index: 1000;
+        background-color: rgba(20, 24, 26);
+        border-radius: 20px;
+        padding: 2rem;
+        row-gap: 50px;
+        box-shadow: 0 20px 15px 3px rgba(0, 0, 0, 0.4);
+      }
+      &.active {
+        visibility: visible;
+        opacity: 1;
+        top: 0;
+      }
+    }
+    .socials {
+      display: flex;
+      column-gap: 20px;
+      a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        transition: all 0.2s ease-in;
+        .fab {
+          font-size: 25px;
+          color: $color-primary-2;
+          transition: all 0.6s ease-in;
+        }
+        &:hover {
+          background-color: $color-text-heading;
+          .fab {
+            color: $color-primary-2;
+            transform: rotate(10deg);
+          }
+        }
+      }
+    }
+    .btn_toggle_menu {
+      position: relative;
+      width: 40px;
+      height: 20px;
+      display: none;
+      span {
+        position: absolute;
+        display: inline-block;
+        width: 100%;
+        height: 2px;
+        background-color: $color-text-heading;
+        transition: 0.3s ease-in;
+        border-radius: 20px;
+        &:first-child {
+          top: 0;
+        }
+        &:nth-child(2) {
+          top: 50%;
+          transform: translateY(50%);
+        }
+        &:last-child {
+          top: 100%;
+        }
+      }
+      @media screen and (max-width: 991px) {
+        display: flex;
+      }
+      @media screen and (max-width: 400px) {
+        position: absolute;
+        width: 30px;
+        top: 2%;
+        right: 4%;
+      }
+    }
+
+    @media screen and (max-width: 991px) {
+      width: 100%;
+      height: auto;
+      flex-direction: row;
+      align-items: center;
+    }
+  }
+  .side_right {
+    width: 1020px;
+    height: 100%;
+    border-radius: 25px;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    row-gap: 25px;
+    background: linear-gradient(
+      40deg,
+      rgba(20, 24, 26, 0.5) 75%,
+      rgba(20, 24, 26, 1) 100%
+    );
+
+    // About styles
+    .about {
+      @include rowGapInSection;
+      &_desc {
+        &_text {
+          font-size: 15px;
+          line-height: 32px;
+          color: $color-gray;
+        }
+      }
+      &_info {
+        display: flex;
+        justify-content: space-between;
+        &_box {
+          display: flex;
+          align-items: center;
+          column-gap: 10px;
+          span {
+            &:first-child {
+              color: $color-primary-2;
+            }
+            color: $color-text-heading;
+            font-size: 15px;
+            @media screen and (max-width: 576px) {
+              font-size: 13px;
+            }
+          }
+          @media screen and (max-width: 400px) {
+            flex-wrap: wrap;
+            row-gap: 5px;
+          }
+        }
+
+        @media screen and (max-width: 991px) {
+          flex-wrap: wrap;
+          row-gap: 20px;
+        }
+      }
+      .btn_resume {
+        a {
+          padding: 10px;
+          background-color: $color-primary-2;
+          border-radius: 20px;
+          color: $color-text-heading;
+        }
+      }
+    }
+    // Skills styles
+    .skills {
+      @include rowGapInSection;
+      &_items {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 20px;
+        .skills_item {
+          display: inline-block;
+          padding: 10px;
+          border-radius: 20px;
+          color: $color-primary-2;
+          font-size: 14px;
+          border: 1px solid $color-primary-2;
+          @media screen and (max-width: 576px) {
+            font-size: 13px;
+          }
+        }
+      }
+    }
+
+    // Experience styles
+    .experience {
+      @include rowGapInSection;
+      .experience_items {
+        @include alignCards;
+        align-items: flex-start;
+        .experience_item {
+          @include styleCardItem(2);
+          @media screen and (max-width: 768px) {
+            @include styleCardItem(1);
+          }
+          .experience_title {
+            @include alignCards;
+            h3 {
+              color: $color-text-heading;
+            }
+            span {
+              color: $color-gray;
+              font-size: 14px;
+            }
+          }
+          .experience_job {
+            color: $color-primary-2;
+            font-size: 13px;
+          }
+          .experience_desc {
+            color: $color-gray;
+            font-size: 15px;
+            line-height: 25px;
+          }
+        }
+      }
+    }
+
+    // Educations styles
+    .educations {
+      @include rowGapInSection;
+      .education_items {
+        @include alignCards;
+        .education_item {
+          @include styleCardItem(2);
+          @media screen and (max-width: 768px) {
+            @include styleCardItem(1);
+          }
+          .education_title {
+            @include alignCards;
+            h3 {
+              color: $color-text-heading;
+              @media screen and (max-width: 576px) {
+                font-size: 17px;
+              }
+            }
+            span {
+              color: $color-text-heading;
+              font-size: 14px;
+            }
+          }
+          .education_field {
+            color: $color-primary-2;
+            font-size: 13px;
+          }
+          .education_uni {
+            color: $color-gray;
+            font-size: 15px;
+            line-height: 25px;
+          }
+        }
+      }
+    }
+
+    @media screen and (max-width: 991px) {
+      width: 100%;
+    }
+  }
+
+  @media screen and (max-width: 991px) {
+    flex-direction: column;
+    row-gap: 30px;
+  }
+}
