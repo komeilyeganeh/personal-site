@@ -33,40 +33,40 @@ body {
 }
 
 // Loading
-// .loading {
-//   position: fixed;
-//   top: 0;
-//   left: 0;
-//   width: 100vw;
-//   height: 100vh;
-//   z-index: 9999;
-//   background-color: $color-body;
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-//   transition: 0.5s ease-in;
-//   span {
-//     position: absolute;
-//     width: 50px;
-//     height: 50px;
-//     border-radius: 50%;
-//     outline: 4px dashed $color-primary-2;
-//     animation: effect-loading 3s linear infinite;
-//     @keyframes effect-loading {
-//       from {
-//         transform: rotate(0deg);
-//       }
-//       to {
-//         transform: rotate(360deg);
-//       }
-//     }
-//   }
-//   &.disable {
-//     transform: scale(2);
-//     opacity: 0;
-//     visibility: hidden;
-//   }
-// }
+.loading {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9999;
+  background-color: $color-body;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.5s ease-in;
+  span {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    outline: 4px dashed $color-primary-2;
+    animation: effect-loading 3s linear infinite;
+    @keyframes effect-loading {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+  }
+  &.disable {
+    transform: scale(2);
+    opacity: 0;
+    visibility: hidden;
+  }
+}
 
 // Container styles
 .container {
